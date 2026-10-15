@@ -16,7 +16,7 @@ server dependencies, no network calls at run time.
 ## Install
 
 ```bash
-git clone <your-repo> siforge && cd siforge
+git clone https://github.com/shankaracharya/siforge && cd siforge
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[structure,parquet,dev]"
 siforge --version
