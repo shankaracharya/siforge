@@ -1,0 +1,93 @@
+# siforge profile: research
+# Knockdown for cell/organism experiments. Potency-forward, gates still hard.
+name: research
+description: Standard research knockdown. Balanced potency/specificity.
+
+lambda_blend: 0.6          # weight on calibrated weighted-mean vs RRA
+default_conformal_q: 0.20  # used only when no calibration is loaded
+
+gates:
+  gc_min: 0.30
+  gc_max: 0.60
+  max_homopolymer: 3
+  forbid_g_quadruplex: true
+  forbid_immunostim: false    # relevant mainly for in vivo / therapeutic
+  seed_tm_max: 21.5
+  strand_conc_m: 1.0e-6
+  max_common_snp_af: null
+  forbid_offtarget_mismatch_le: 2
+
+specificity:
+  pots_low: 4.0        # log10 seed-complement burden considered unacceptable
+  pots_target: 1.5     # log10 burden considered excellent
+  burden_low: 2.0
+  burden_target: 0.3
+  seed_tm_max: 21.5
+  tm_margin_low: -5.0
+  tm_margin_target: 10.0
+  r: 2.0
+
+objectives:
+  potency:
+    low: 0.40
+    target: 0.85
+    r: 1.0
+    weight: 0.45
+    missing: 0.40
+  specificity:
+    low: 0.0
+    target: 1.0
+    r: 1.0
+    weight: 0.25
+    missing: 0.50
+  accessibility:
+    # percentile units: unpaired probabilities are not comparable in
+    # absolute terms across transcripts or u-lengths
+    transform: percentile
+    low: 0.02
+    target: 0.75
+    r: 0.8
+    weight: 0.15
+    missing: 0.50
+  coverage:
+    low: 0.50
+    target: 1.00
+    r: 1.5
+    weight: 0.10
+    missing: 1.00
+  conservation:
+    low: 0.0
+    target: 1.0
+    r: 1.0
+    weight: 0.0
+    missing: 1.00
+  manufacturability:
+    low: 0.0
+    target: 1.0
+    r: 0.5
+    weight: 0.05
+    missing: 0.75
+
+portfolio:
+  min_distance_nt: 50
+  min_seed_hamming: 3
+  max_offtarget_jaccard: 0.2
+
+# Third-party predictors. Each must read a TSV of
+# candidate_id/guide/sense/site and write candidate_id/score.
+# Adapters ship disabled; enable once the tool is installed.
+external_engines:
+  - name: oligoformer
+    family: rnafm_transformer
+    enabled: false
+    version: "btae577"
+    command: ["siforge-adapter-oligoformer", "--in", "{input}", "--out", "{output}"]
+    probe: ["siforge-adapter-oligoformer", "--selftest"]
+  - name: attsioff
+    family: rnafm_transformer     # shares the RNA-FM backbone with OligoFormer
+    enabled: false
+    command: ["siforge-adapter-attsioff", "--in", "{input}", "--out", "{output}"]
+  - name: gnn4sirna
+    family: graph                 # architecturally independent
+    enabled: false
+    command: ["siforge-adapter-gnn4sirna", "--in", "{input}", "--out", "{output}"]

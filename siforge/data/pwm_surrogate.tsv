@@ -1,0 +1,86 @@
+# siforge surrogate position-weight table (SENSE strand, 1-based).
+#
+# THIS IS NOT the published i-Score (Ichihara 2007) or DSIR (Vert 2006)
+# coefficient table. It is a smooth surrogate assembled from widely
+# reported consensus base preferences so that the `pwm` engine is
+# functional out of the box. Do NOT report results from this table as
+# i-Score or DSIR values. To use the real models, replace this file
+# (or pass --pwm) with the published coefficients in the same format.
+#
+# position<TAB>base<TAB>coefficient   (higher = more favourable)
+1	A	-0.3500
+1	C	0.5000
+1	G	0.6000
+1	U	-0.4500
+2	A	-0.1222
+2	C	0.1222
+2	G	0.1222
+2	U	-0.1222
+3	A	0.3056
+3	C	0.0944
+3	G	0.0944
+3	U	-0.0944
+4	A	-0.0667
+4	C	0.0667
+4	G	0.0667
+4	U	-0.0667
+5	A	-0.0389
+5	C	0.0389
+5	G	0.0389
+5	U	-0.0389
+6	A	0.1889
+6	C	0.0111
+6	G	0.0111
+6	U	-0.0111
+7	A	0.0167
+7	C	-0.0167
+7	G	-0.0167
+7	U	0.0167
+8	A	0.0444
+8	C	-0.0444
+8	G	-0.0444
+8	U	0.0444
+9	A	0.0722
+9	C	-0.0722
+9	G	-0.0722
+9	U	0.0722
+10	A	0.1000
+10	C	-0.1000
+10	G	-0.2500
+10	U	0.5500
+11	A	0.1278
+11	C	-0.1278
+11	G	-0.3278
+11	U	0.1278
+12	A	0.1556
+12	C	-0.1556
+12	G	-0.1556
+12	U	0.1556
+13	A	0.1833
+13	C	-0.1833
+13	G	-0.5833
+13	U	0.1833
+14	A	0.2111
+14	C	-0.2111
+14	G	-0.2111
+14	U	0.2111
+15	A	0.2389
+15	C	-0.2389
+15	G	-0.2389
+15	U	0.2389
+16	A	0.4167
+16	C	-0.2667
+16	G	-0.2667
+16	U	0.4167
+17	A	0.2944
+17	C	-0.2944
+17	G	-0.2944
+17	U	0.2944
+18	A	0.3222
+18	C	-0.3222
+18	G	-0.3222
+18	U	0.3222
+19	A	1.0500
+19	C	-0.7000
+19	G	-0.9500
+19	U	0.7000
